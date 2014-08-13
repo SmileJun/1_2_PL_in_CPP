@@ -1,21 +1,21 @@
 #pragma once
-#include "Board.h"
-
+#include <string>
 class GameManager
 {
 public:
 	GameManager();
 	~GameManager();
-private:
-	Board b1;
-	Board b2;
-	int nowTurn;
-	void DeleteShip();
 
 public:
-	int whoWinner();
-	int GetNowTurn();
-	void turnChange();
-
+	bool ReceiveMap();
+	bool MapCheck();
+	
+private:
+	std::string player1Name;
+	std::string player2Name;
+	int player1Score;
+	int player2Score;
+	bool player1Map[8][8];
+	bool player2Map[8][8];
+	int turnoverNumber;
 };
-

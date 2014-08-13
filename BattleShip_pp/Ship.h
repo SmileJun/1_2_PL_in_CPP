@@ -1,31 +1,35 @@
 #pragma once
-struct Position
+#include <string>
+
+enum ShipType
 {
-	int x, y;
+	SHIP_NONE,
+	AIRCRAFT,
+	BATTLESHIP,
+	CRUSIER,
+	DESTROYER,
 };
 
 enum HitResult
 {
+	Hit,
 	MISS,
-	HIT,
-	DESTROY
+	DESTROY,
 };
 
 enum Direction
 {
-	RIGHT,
-	LEFT,
-	UP,
-	DOWN
+	DIRECTION_NONE,
+	East,
+	West,
+	South,
+	North,
 };
 
-enum ShipType
+struct Position
 {
-	SHIPNONE,
-	AIRCRAFT,
-	BATTLESHIP,
-	CRUISER,
-	DESTROYER
+	char m_X;
+	char m_Y;
 };
 
 class Ship
@@ -34,29 +38,20 @@ public:
 	Ship();
 	~Ship();
 
-public:
-	HitResult HitCheck(Position pos);
-	int GetHP();
-	void AddPosition(Position head, Direction dir);
+	void AddPosition(Position pos);
+	void AddPosition(char x, char y);
+	HitResult HitCheck(Position hitPos);
 	void Print();
+	bool IsValidPosition(Position head, Direction direction);
+	int GetCurHP();
+	int GetMaxHP();
+	Position GetPos(int index);
+	std::string GetName();
 
 protected:
-	Position m_Pos[5];
-	int size;
-	int m_Hp;
-	/*
-	Direction m_Direction;*/
+	std::string m_Name;
 	ShipType m_Type;
+	Position m_Pos[5];
+	int m_MaxHP;
+	int m_CurHP;
 };
-
-class Aircraft: public Ship
-{
-public:
-	Aircraft();
-	~Aircraft();
-	void Print();
-
-private:
-
-};
-

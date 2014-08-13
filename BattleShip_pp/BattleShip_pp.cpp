@@ -1,71 +1,82 @@
-// BattleShip_PP.cpp : 콘솔 응용 프로그램에 대한 진입점을 정의합니다.
+// BattleShip_PP.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
-#include <string>
+#include <conio.h>
+#include <array>
 #include <vector>
-#include "Ship.h"
+#include <string>
+#include <iostream>
+#include <time.h>
+#include "Aircraft.h"
+#include "Player.h"
 
-const std::string strDestroy = "Destroy";
-const std::string strHit = "Hit";
-const std::string strMiss = "Miss";
-
-int _tmain()
+int _tmain(int argc, _TCHAR* argv[])
 {
-	/*std::string strinput;
-	std::string strResult[] = { strHit, strMiss, strDestroy };
-	int kind;
-	int destroyedKind;
-	std::vector<std::string> ships;
-	std::vector<std::string> destroyedShips;
-	ships.push_back("Aircraft");
-	ships.push_back("Battleship");
-	ships.push_back("Cruiser");
-	ships.push_back("Destroyer");
-	ships.push_back("Destroyer");
-	
-	srand((unsigned int)time(NULL));
+	Player player;
+	player.SetupShips();
+	player.PrintAllShips();
 
-	while (!ships.empty())
-	{
-		std::cin >> strinput;
-		kind = rand() % _countof(strResult);
-		std::cout << strResult[kind];
-		if (strResult[kind] == strDestroy)
-		{
-			destroyedKind = rand() % ships.size();
-			std::cout << " - ";
-			destroyedShips.push_back(ships[destroyedKind]);
-			ships.erase(ships.begin() + destroyedKind);
-			for (unsigned int i = 0; i < destroyedShips.size(); i++)
-			{
-				std::cout << destroyedShips[i] << " ";
-			}
-		}
-		std::cout << std::endl;
-	}
-	std::cout << "GAME OVER!" << std::endl;
-	fflush(stdin);
-	getchar();
+// 	Aircraft aircraft;
+// 	Position pos;
+// 	pos.m_X = 'c';
+// 	pos.m_Y = '3';
+// 	aircraft.AddPosition(pos);
+// 	aircraft.Print();
+// 	pos.m_Y = '2';
+// 	aircraft.HitCheck(pos);
+// 	aircraft.Print();
 
-	return 0;*/
+// 	srand((unsigned int)time(NULL));
+// 
+// 	std::string ships[] = { "Aircraft", "Battleship", "Cruiser", "Destroyer", "Destroyer" };
+// 	std::string results[] = { "HIT!", "MISS!", "DESTROY!" };
+// 	int remainder = _countof(ships);
+// 	
+// 	while (remainder > 0)
+// 	{
+// 		std::string input;
+// 		std::cin >> input;
+// 
+// 		int result = rand() % _countof(results);
+// 		std::cout << results[result] << std::endl;
+// 		
+// 		if (results[result] == "DESTROY!")
+// 		{
+// 			int destroyedShipIdx = 0;
+// 			do 
+// 			{
+// 				destroyedShipIdx = rand() % _countof(ships);
+// 			} while (ships[destroyedShipIdx] == "");
+// 
+// 			std::cout << ships[destroyedShipIdx] + " was destroyed" << std::endl;
+// 			ships[destroyedShipIdx] = "";
+// 			remainder--;
+// 			
+// 			std::cout << "Remainder Ships: ";
+// 			int foo = 0;
+// 			for (int i = 0; i < _countof(ships); i++)
+// 			{
+// 				if (ships[i] != "")
+// 				{
+// 					std::cout << ships[i];
+// 					foo++;
+// 					if (1 <= foo && foo < remainder - 1)
+// 					{
+// 						std::cout << ", ";
+// 					}
+// 					else if (foo == remainder - 1)
+// 					{
+// 						std::cout << " and ";
+// 					}
+// 				}
+// 			}
+// 			std::cout << std::endl;
+// 		}
+// 	}
+// 
+// 	std::cout << "GAME OVER!!" << std::endl;
+	_getch();
 
-
-	Aircraft aircraft;
-
-	Position pos;
-	pos.x = 3;
-	pos.y = 3;
-	aircraft.AddPosition(pos, RIGHT);
-	std::cout << aircraft.HitCheck(pos) << "\n";
-
-	aircraft.Print();
-
-
-	getchar();
 	return 0;
 }
-
